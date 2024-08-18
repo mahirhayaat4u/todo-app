@@ -1,7 +1,8 @@
  
  import axios from "axios"
 export const axiosInstance =axios.create({
-    baseURL: "http://localhost:4000",
+    baseURL: "https://note-app-xmpt.onrender.com",
+    // baseURL: "http://localhost:4000",
     
 });
  

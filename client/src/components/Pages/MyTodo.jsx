@@ -32,7 +32,7 @@ export default function MyTodo() {
      try {
       const result = await fetchUserTodoDetails(todoId)
       
-      console.log("Edit Course result", result)
+      // console.log("Edit Course result", result)
       if (result) {
         dispatch(setEditTodo(true))
         // console.log("Dispatching setCourse with", result.data.courseDetails) // Debug log
@@ -41,7 +41,7 @@ export default function MyTodo() {
 
 
      } catch (error) {
-      console.log("Error fetching course details", error) // Log any errors
+      // console.log("Error fetching course details", error) // Log any errors
       toast.error("Error fetching course details in try catch block")
      }
       setLoading(false)
