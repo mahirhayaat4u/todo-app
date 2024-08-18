@@ -19,17 +19,17 @@ app.use(
     cors({
         origin:"https://todo-app-taupe-nine.vercel.app/",
         credentials:true,
-        methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],  // Allow methods
-        allowedHeaders: ['Content-Type', 'Authorization']  // Allow headers
+        // methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],  // Allow methods
+        // allowedHeaders: ['Content-Type', 'Authorization']  // Allow headers
 
     })
     
 )
 
-app.options('*', cors({
-    origin: "https://todo-app-taupe-nine.vercel.app/",  // Your frontend URL
-    credentials: true
-}));
+// app.options('*', cors({
+//     origin: "https://todo-app-taupe-nine.vercel.app/",  // Your frontend URL
+//     credentials: true
+// }));
 
 
 
