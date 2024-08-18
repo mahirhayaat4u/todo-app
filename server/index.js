@@ -27,7 +27,7 @@ app.use(
 )
 
 app.options('*', cors({
-    origin: "http://localhost:3000",  // Your frontend URL
+    origin: "https://todo-app-taupe-nine.vercel.app/",  // Your frontend URL
     credentials: true
 }));
 
