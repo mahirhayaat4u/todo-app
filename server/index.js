@@ -17,7 +17,7 @@ app.use(express.json());
 app.use(cookieParser())
 app.use(
     cors({
-        origin:"http://localhost:3000",
+        origin:"https://todo-app-taupe-nine.vercel.app/",
         credentials:true,
         methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],  // Allow methods
         allowedHeaders: ['Content-Type', 'Authorization']  // Allow headers
