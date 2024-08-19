@@ -9,7 +9,7 @@ exports.auth=async(req,res,next)=>{
         const token=req.cookies.token || req.body.token || req.header("Authorization").replace("Bearer ","")
 
 
-                    //    console.log(token)
+                       console.log(",token in middleware",token)
 
              if(!token){
                 return res.status(401).json({
@@ -23,7 +23,7 @@ exports.auth=async(req,res,next)=>{
              try {
                 const decodedJwt=await jwt.verify(token,"SCHOOL")
 
-                // console.log(decodedJwt)
+                console.log(decodedJwt)
 
                 req.user=decodedJwt
                 // console.log(req.user)
