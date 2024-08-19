@@ -1,3 +1,4 @@
+import axios from "axios"
 import { setLoading, setToken } from "../../slices/authSlice"
 import { apiConnector } from "../apiConnector"
 import toast from 'react-hot-toast'
@@ -9,11 +10,11 @@ export  function signup(name,email,password,setIsLogin){
         dispatch(setLoading(true))
 
         try {
-            const response=await apiConnector('POST', "/signup",{
+            const response = await axios.post('https://note-app-xmpt.onrender.com/signup', {
                 name,
                 email,
                 password,
-            })
+              });
 
             console.log("Signup API response : ",response)
 
@@ -54,11 +55,16 @@ export  function login(email,password,navigate){
 
             // toast.success("Successfully logged in")s
             
-            const response=await apiConnector('POST',"/loginUser",{
+            const response = await axios.post('https://note-app-xmpt.onrender.com/loginUser', {
                 email,
                 password
-            })
-
+              }, {
+                headers: {
+                  'Content-Type': 'application/json',
+                  // Include any additional headers if needed
+                },
+                withCredentials: true // If your backend uses cookies
+              });
             console.log("Login API response : ",response)
             
             if(!response.data.success) {

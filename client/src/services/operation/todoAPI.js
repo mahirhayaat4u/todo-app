@@ -1,5 +1,6 @@
 import toast from "react-hot-toast"
 import { apiConnector } from "../apiConnector"
+import axios from "axios"
 
 export const createTodoList = async(data,token,navigate) =>{
     let result=null
@@ -7,10 +8,13 @@ export const createTodoList = async(data,token,navigate) =>{
     const toastId=toast.loading("Loading...")
 
     try {
-        const response=await apiConnector("POST","/createTodo",data,{
-            
+      const response = await axios.post('https://note-app-xmpt.onrender.com/createTodo', data, {
+        headers: {
             Authorization: `Bearer ${token}`,
-        })
+            'Content-Type': 'application/json', // Ensure the content type is set
+        },
+        withCredentials: true, // Include credentials if needed
+    });
         
 
         console.log("create todo api response",response)
@@ -38,9 +42,12 @@ export const fetchUserTodo=async(token)=>{
     // console.log("token in fetch user todo",token)
     const toastId=toast.loading("Loading...")
     try {
-        const response=await apiConnector("GET","/getUserTodos",null,{
-             Authorization: `Bearer ${token}`,
-        })
+      const response = await axios.get('https://note-app-xmpt.onrender.com/getUserTodos', {
+        headers: {
+            Authorization: `Bearer ${token}`,
+        },
+        withCredentials: true, // Include credentials if needed
+    });
 
         if (!response?.data?.success) {
             throw new Error("Could Not Fetch todo")
@@ -69,10 +76,13 @@ export const updateTodoData=async(data,token,navigate)=>{
         title: data.get("title"),
         content: data.get("content"),
       };
-      const response = await apiConnector("PUT", "/updateTodo", jsonData, {
-     
-        Authorization: `Bearer ${token}`,
-      })
+      const response = await axios.put('https://note-app-xmpt.onrender.com/updateTodo', jsonData, {
+        headers: {
+            Authorization: `Bearer ${token}`,
+            'Content-Type': 'application/json', // Ensure the content type is set
+        },
+        withCredentials: true, // Include credentials if needed
+    });
       console.log("EDIT todo API RESPONSE............", response)
       if (!response?.data?.success) {
         throw new Error("Could Not Update todo Details")
@@ -91,9 +101,14 @@ export const updateTodoData=async(data,token,navigate)=>{
 export const deleteTodoData=async(data,token)=>{
     const toastId = toast.loading("Loading...")
     try {
-      const response = await apiConnector("DELETE", "/deleteTodo", data, {
-        Authorization: `Bearer ${token}`,
-      })
+      const response = await axios.delete('https://note-app-xmpt.onrender.com/deleteTodo', {
+        headers: {
+            Authorization: `Bearer ${token}`,
+            'Content-Type': 'application/json',
+        },
+        data: data, // Send the data in the request body
+        withCredentials: true, // Include credentials if needed
+    });
       console.log("DELETE todo API RESPONSE............", response)
       if (!response?.data?.success) {
         throw new Error("Could Not Delete todo")
@@ -112,7 +127,9 @@ export const fetchUserTodoDetails = async (todoId) => {
     //  console.log("fetchcoursedetails api in : ",courseId)
   let result = null
   try {
-    const response = await apiConnector("GET", "/todoDetails", null, null, { todoId })
+    const response = await axios.get('https://note-app-xmpt.onrender.com/todoDetails', {
+      params: { todoId },
+    });
     console.log("fetchTodoDetails API RESPONSE............", response)
 
     if (!response.data.success) {

@@ -11,7 +11,7 @@ import MyTodo from './components/Pages/MyTodo';
 
 function App() {
   return (
-    <div className='bg-[#F1F1F1] h-[100vh]  flex justify-center items-center'>
+    <div className='  h-[100vh]  flex justify-center items-center'>
        
        <Routes>
            <Route path='/' element={<Hero/>}/>
