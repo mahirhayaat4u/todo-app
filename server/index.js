@@ -17,19 +17,17 @@ app.use(express.json());
 app.use(cookieParser())
 app.use(
     cors({
-        origin:"https://todo-app-taupe-nine.vercel.app",
-        credentials:true,
-        methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],  // Allow methods
-        allowedHeaders: ['Content-Type', 'Authorization']  // Allow headers
-
+      origin: [
+        // 'http://localhost:3000',  // Local development
+        'https://todo-app-taupe-nine.vercel.app'  // Production URL
+      ],
+      credentials: true,  // Allow cookies to be sent and received
+      methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],  // Allow these HTTP methods
+      allowedHeaders: ['Content-Type', 'Authorization']  // Allow these headers
     })
-    
-)
+  );
 
-// app.options('*', cors({
-//     origin: "https://todo-app-taupe-nine.vercel.app/",  // Your frontend URL
-//     credentials: true
-// }));
+ 
 
 
 
