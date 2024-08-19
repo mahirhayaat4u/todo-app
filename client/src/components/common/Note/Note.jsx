@@ -107,6 +107,10 @@ const getRandomColor = () => {
     todo.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
     todo.content.toLowerCase().includes(searchQuery.toLowerCase())
   );
+  // todo.title.toLowerCase():
+// This converts the title of the current "todo" item to lowercase.
+// The toLowerCase() method is used to ensure that the search is case-insensitive, meaning it doesn't matter if the search query is in uppercase, lowercase, or mixed case.
+
 
 
   return (
