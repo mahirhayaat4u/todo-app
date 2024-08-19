@@ -75,13 +75,13 @@ exports.login = async (req, res) => {
       };
 
       const token = jwt.sign(payload, "SCHOOL", {
-        expiresIn: "5h",
+        expiresIn: "1h",
       });
       user.token = token;
       user.password = undefined;
 
       const options = {
-        expiresIn: "5h",
+        expiresIn: "1h",
         httpOnly: true,
       };
       res.cookie("token", token, options).json({
